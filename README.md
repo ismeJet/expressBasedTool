@@ -21,7 +21,7 @@ For public repository:
 
 # Setup ENV
     step 1: run command: npm install
-    step 2: start server folling section: Start server
+    step 2: start server folling SECTION: Start server
 
 # Start server
     Approach 1: run command in the root directory: node server.js
