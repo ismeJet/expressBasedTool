@@ -1,0 +1,83 @@
+<!DOCTYPE>  
+<html>  
+ <head>  
+  <title> New Document </title>  
+  <meta name="Generator" content="EditPlus">  
+  <meta name="Author" content="">  
+  <meta name="Keywords" content="">  
+  <meta name="Description" content="">  
+  <style>
+
+	.css1.css2{
+		border: 1px solid red;
+	}
+	div.css1:not(.css2){
+		background:blue;
+	}
+	
+	.condition_highlight [data-background="high"]{
+		background:green;
+	}
+	
+  </style>
+  
+  <script type="text/javascript"> 
+	
+
+  </script>  
+ </head>  
+  
+ <body>  
+	<p/>
+	外层的overflow 为 auto 时：
+	含有固定高度内容的情况下，内层div高度设置为 100% 时 的高度问题
+	<div style=" width: 100%;height:200px">
+		<div role="outer" style=" width: 100%;height:100%; border: 1px solid green; display:flex; flex-direction: column; overflow:auto" >
+			下面div的高度虽然都是设置height：100，但是
+			flex-shrink：0：<div style="color: red;">高度是外层div的高度</div>。
+				把外层div撑出滚动条
+			flex-shrink: 1， flex-grow: 1，flex-grow: 0: 高度是外层div除了固定内容后的高度，
+				缺点：外层内容如果过多，则下面这个div就不见了(<div style="color: red;">解决方法：设置 min-height</div>)
+			<div style="height: 100%; width:100%;  border: 1px solid blue; flex-grow:1; overflow:auto">	
+				<p>inner1 </p>
+				<p>inner2 </p>
+				<p>inner3 </p>
+				<p>inner4 </p>
+				<p>inner5 </p>
+				<p>inner6 </p>
+				<p>inner7 </p>
+				<p>inner8 </p>
+			</div>
+		</div>
+	 </div>
+
+<p/>
+	外层的overflow 为 hidden 时：（<div style="color: red;">很少用</div>）
+	含有固定高度内容的情况下，内层div高度设置为 100% 时 的高度问题
+	<div style=" width: 100%;height:200px">
+		<div role="outer" style=" width: 100%;height:100%; border: 1px solid green; display:flex; flex-direction: column; overflow:hidden" >
+			下面div的高度虽然都是设置height：100，但是
+			flex-shrink：0：高度是外层div的高度。
+				优点：不会把外层div撑出滚动条
+				缺点：内容显示不全; 外层内容如果过多,下面div不见
+			flex-shrink: 1， flex-grow: 1，flex-grow: 0: 高度是外层div除了固定内容后的高度，
+				缺点：外层内容如果过多，则下面这个div就不见了
+				
+			<div style="height: 100%; width:100%;  border: 1px solid blue; flex-shrink:0; overflow:auto">	
+				<p>inner1 </p>
+				<p>inner2 </p>
+				<p>inner3 </p>
+				<p>inner4 </p>
+				<p>inner5 </p>
+				<p>inner6 </p>
+				<p>inner7 </p>
+				<p>inner8 </p>
+			</div>
+		</div>
+	 </div>
+ 
+<p/>
+
+  
+ </body>  
+</html>  
